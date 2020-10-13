@@ -1,3 +1,2 @@
 echo "Hola mundo"
 echo "Chupala"
-echo "Rico";
