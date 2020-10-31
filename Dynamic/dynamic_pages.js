@@ -12,9 +12,12 @@ addEventListener("click", function (e) {
   sessionStorage.setItem("URL", almacen);
   let nuevoArticulo = sessionStorage.getItem("URL")
   console.log(nuevoArticulo)
-  document.getElementById("articulo").src = sessionStorage.getItem("URL");
+  console.log(sessionStorage.getItem("URL"));
+  var insersionArt = document.getElementById("articulo").onload
+/*  insersionArt.innerHTML = "<a href=\"themes/images/ladies/1.jpg\" class=\"thumbnail\" data-fancybox-group=\"group1\" title=\"Description 1\"><img alt=\"\" src="+sessionStorage.getItem("URL")+"></a>"*/
 });
 
-/* var aux = document.getElementById("articulo");
-console.log("hola")
-console.log(aux) */
+
+
+
+insersionArt.innerHTML = "<a href=\"themes/images/ladies/1.jpg\" class=\"thumbnail\" data-fancybox-group=\"group1\" title=\"Description 1\"><img alt=\"\" src="+sessionStorage.getItem("URL")+"></a>"
