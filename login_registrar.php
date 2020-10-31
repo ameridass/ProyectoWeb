@@ -13,7 +13,7 @@ if(isset($_POST["btningresar"]))
 	
 	if($nr==1)
 	{
-		echo "<script> alert('Bienvenido $nombre'); window.location='index.html' </script>";
+		echo "<script> alert('Bienvenido $nombre'); window.location='index_producto.html' </script>";
 	}else
 	{
 		echo "<script> alert('Usuario no existe'); window.location='index.html' </script>";
