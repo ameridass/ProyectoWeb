@@ -51,11 +51,9 @@
 					<a href="index.html" class="logo pull-left"><img src="themes/images/logo_01.png " class="site_logo" alt=""></a>
 					<nav id="menu" class="pull-right">
 						<ul>
-							<li><a href="#form_producto">Registrar producto</a>					
-							</li>															
+							<li><a href="#form_producto">Registrar producto</a></li>															
 							<li><a href="#">Opcion1</a></li>			
-							<li><a href="#">Opcion2</a>
-							</li>							
+							<li><a href="#">Opcion2</a></li>							
 							<li><a href="#">opcion3</a></li>
 							<li><a href="#">opcion4</a></li>
 							<li><a href="#">opcion5</a></li>
@@ -73,60 +71,39 @@
 					  </div>
 					  <div class="form-group col-md-6">
 						<label >Categoria</label>
-						<select name="Seleccione la categoría" >
-							
-							<option selected="true" disabled="disabled">seleccione la marca</option>
-							<option value="Blusas dama">Blusa Dama</option>
-							
-							<option value = "Pantalon dama">Pantalon dama</option>
-							
+						<select name="categoría" >							
+							<option value = "" selected="true" disabled="disabled">seleccione la categoría</option>
+							<option value="Blusas dama">Blusa Dama</option>							
+							<option value = "Pantalon dama">Pantalon dama</option>							
 							<option Value = "Pijama dama">Pijama dama</option>
-
-							<option value="Camisa Caballero">Camisa Caballero</option>
-							
-							<option value = "pantalon caballero">Pantalon dama</option>
-							
-							<option value ="Accesorios">Accesorios</option>
-							
-							</select>
-
-
+							<option value="Camisa Caballero">Camisa Caballero</option>							
+							<option value = "pantalon caballero">Pantalon dama</option>							
+							<option value ="Accesorios">Accesorios</option>							
+						</select>
 					  </div>
 					</div>
 					<div class="form-group">
-					  <label for="inputAddress">Address</label>
-					  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+					  <label>Talla</label>
+					  <select name="talla" >							
+						<option value = "" selected="true" disabled="disabled">seleccione la talla</option>
+						<option value="SM">Extra pequeño</option>							
+						<option value = "S">Pequeño</option>							
+						<option Value = "M">Mediano</option>
+						<option value="L">Grande</option>							
+						<option value = "XL">Extra-Grande</option>													
+					</select>
 					</div>
 					<div class="form-group">
-					  <label for="inputAddress2">Address 2</label>
-					  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+					  <label for="cantidad">cantidad</label>
+					  <input type="text" class="form-control" id="cantidad" placeholder="Ingrese cantidad">
 					</div>
 					<div class="form-row">
 					  <div class="form-group col-md-6">
 						<label for="inputCity">City</label>
 						<input type="text" class="form-control" id="inputCity">
 					  </div>
-					  <div class="form-group col-md-4">
-						<label for="inputState">State</label>
-						<select id="inputState" class="form-control">
-						  <option selected>Choose...</option>
-						  <option>...</option>
-						</select>
-					  </div>
-					  <div class="form-group col-md-2">
-						<label for="inputZip">Zip</label>
-						<input type="text" class="form-control" id="inputZip">
-					  </div>
 					</div>
-					<div class="form-group">
-					  <div class="form-check">
-						<input class="form-check-input" type="checkbox" id="gridCheck">
-						<label class="form-check-label" for="gridCheck">
-						  Check me out
-						</label>
-					  </div>
-					</div>
-					<button type="submit" class="btn btn-primary">Sign in</button>
+					<button type="submit" class="btn btn-primary">Guardar</button>
 				  </form>
 
 			</section>		
