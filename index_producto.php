@@ -2,11 +2,16 @@
 
 include("conexion.php");
 
-$nombre = $_POST["usuario"];
-$pass   = $_POST["pass"];
+
+
+$ProdNom = $_POST["ProdNom"];
+$categoría   = $_POST["categoría"];
+$talla = $_POST["talla"];
+$cantidad   = $_POST["cantidad"];
+
 
 //Login
-if(isset($_POST["btningresar"]))
+if(isset($_POST["btnguardar"]))
 {
 	$query = mysqli_query($conn,"select ftn_login('$nombre','$pass')");
 	$nr = ($query);
@@ -19,6 +24,5 @@ if(isset($_POST["btningresar"]))
 		echo "<script> alert('Usuario no existe'); window.location='index.html' </script>";
 	}
 }
-
 
 ?>
