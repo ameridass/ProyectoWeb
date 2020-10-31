@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>E-commerce Team Nocturno</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+		<!-- bootstrap -->
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">      
+		<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+		
+		<link href="themes/css/bootstrappage.css" rel="stylesheet"/>
+		
+		<!-- global styles -->
+		<link href="themes/css/flexslider.css" rel="stylesheet"/>
+		<link href="themes/css/main.css" rel="stylesheet"/>
+
+		<!-- scripts -->
+		<script src="themes/js/jquery-1.7.2.min.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>				
+		<script src="themes/js/superfish.js"></script>	
+		<script src="themes/js/jquery.scrolltotop.js"></script>
+		<!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+    <body>		
+		<div id="top-bar" class="container">
+			<div class="row">
+				<div class="span4">
+					<form method="POST" class="search_form">
+						<input type="text" class="input-block-level search-query" Placeholder="Categoria, Marca">
+					</form>
+				</div>
+				<div class="span8">
+					<div class="account pull-right">
+						<ul class="user-menu">				
+							<li><a href="logincli.html">Mi cuenta</a></li>
+							<li><a href="checkout.html">Carrito</a></li>					
+							<li><a href="register.html">Login</a></li>		
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="wrapper" class="container">
+			<section class="navbar main-menu">
+				<div class="navbar-inner main-menu">				
+					<a href="index.html" class="logo pull-left"><img src="themes/images/logo_01.png " class="site_logo" alt=""></a>
+					<nav id="menu" class="pull-right">
+						<ul>
+							<li><a href="#form_producto">Registrar producto</a>					
+							</li>															
+							<li><a href="#">Opcion1</a></li>			
+							<li><a href="#">Opcion2</a>
+							</li>							
+							<li><a href="#">opcion3</a></li>
+							<li><a href="#">opcion4</a></li>
+							<li><a href="#">opcion5</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+			<section id='form_producto'>
+				<form>
+					<h2>Ingrese los datos de su producto a registrar:</h2>
+					<div class="form-row">
+					  <div class="form-group col-md-6">
+						<label >Nombre producto:</label>
+						<input type="text" class="form-control" id="ProdNom" placeholder="Nombre de producto">
+					  </div>
+					  <div class="form-group col-md-6">
+						<label >Categoria</label>
+						<select name="Seleccione la categoría" >
+							
+							<option selected="true" disabled="disabled">seleccione la marca</option>
+							<option value="Blusas dama">Blusa Dama</option>
+							
+							<option value = "Pantalon dama">Pantalon dama</option>
+							
+							<option Value = "Pijama dama">Pijama dama</option>
+
+							<option value="Camisa Caballero">Camisa Caballero</option>
+							
+							<option value = "pantalon caballero">Pantalon dama</option>
+							
+							<option value ="Accesorios">Accesorios</option>
+							
+							</select>
+
+
+					  </div>
+					</div>
+					<div class="form-group">
+					  <label for="inputAddress">Address</label>
+					  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+					</div>
+					<div class="form-group">
+					  <label for="inputAddress2">Address 2</label>
+					  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+					</div>
+					<div class="form-row">
+					  <div class="form-group col-md-6">
+						<label for="inputCity">City</label>
+						<input type="text" class="form-control" id="inputCity">
+					  </div>
+					  <div class="form-group col-md-4">
+						<label for="inputState">State</label>
+						<select id="inputState" class="form-control">
+						  <option selected>Choose...</option>
+						  <option>...</option>
+						</select>
+					  </div>
+					  <div class="form-group col-md-2">
+						<label for="inputZip">Zip</label>
+						<input type="text" class="form-control" id="inputZip">
+					  </div>
+					</div>
+					<div class="form-group">
+					  <div class="form-check">
+						<input class="form-check-input" type="checkbox" id="gridCheck">
+						<label class="form-check-label" for="gridCheck">
+						  Check me out
+						</label>
+					  </div>
+					</div>
+					<button type="submit" class="btn btn-primary">Sign in</button>
+				  </form>
+
+			</section>		
+			<section class="our_client">
+			</section>
+			<section id="footer-bar">
+				<div class="row">
+					<div class="span3">
+						<h4>Navegacion</h4>
+						<ul class="nav">
+							<li><a href="#">Inicio</a></li>  
+							<li><a href="#">Sobre nosotros</a></li>
+							<li><a href="#">Contacto</a></li>
+							<li><a href="#">Tu carrio</a></li>
+							<li><a href="login.html">Login</a></li>							
+						</ul>					
+					</div>
+					<div class="span4">
+						<h4>Mi cuenta</h4>
+						<ul class="nav">
+							<li><a href="#">Ajustes</a></li>
+							<li><a href="#">Historial de ordenes</a></li>
+						</ul>
+					</div>
+					<div class="span5">
+						<p class="logo"><img src="themes/images/logo_01.png" class="site_logo" alt=""></p>
+						<p>Nos reservamos los derechos.</p>
+						<br/>
+						
+					</div>					
+				</div>	
+			</section>
+			<section id="copyright">
+				<span>Proyecto de programacion web de "Alvaro Sosa, Geizer Posadas y Josue Noriega"</span>
+			</section>
+		</div>
+
+		<script src="themes/js/common.js"></script>
+		<script src="themes/js/jquery.flexslider-min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$(document).ready(function() {
+					$('.flexslider').flexslider({
+						animation: "fade",
+						
+						controlNav: false,
+						directionNav: true,
+						controlsContainer: ".flex-container" // the container that holds the flexslider
+					});
+				});
+			});
+		</script>
+    </body>
+</html>
