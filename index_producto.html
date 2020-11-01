@@ -21,6 +21,7 @@
 		<script src="bootstrap/js/bootstrap.min.js"></script>				
 		<script src="themes/js/superfish.js"></script>	
 		<script src="themes/js/jquery.scrolltotop.js"></script>
+		<script src="themes\js\JSprod.js"></script>
 		<!--[if lt IE 9]>			
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 			<script src="js/respond.min.js"></script>
@@ -83,20 +84,15 @@
 					  </div>
 					</div>
 					<div class="form-group">
-					  <label>Talla</label>
-					  <select name="talla" >							
-						<option value = "" selected="true" disabled="disabled">seleccione la talla</option>
-						<option value="SM">Extra pequeño</option>							
-						<option value = "S">Pequeño</option>							
-						<option Value = "M">Mediano</option>
-						<option value="L">Grande</option>							
-						<option value = "XL">Extra-Grande</option>													
-					</select>
+					<label>Cargue una imagen del producto</label>	
+					<input id= "file" type="file" name="imagen"/>
 					</div>
+					<hr>
+					<div id="preview"></div>
 					<div class="form-group">
-					  <label>cantidad</label>
-					  <input type="text" class="form-control" id="cantidad" placeholder="Ingrese cantidad" name = "cantidad">
-					</div>
+						<label>Descripcion</label>
+						<textarea name="descripcion" rows="10" cols="40">Escribe aquí una descripcion del producto</textarea>
+					  </div>
 					<button type="submit" class="btn btn-primary" name="btnguardar">Guardar</button>
 				  </form>
 

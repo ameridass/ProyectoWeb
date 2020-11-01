@@ -6,8 +6,8 @@ include("conexion.php");
 
 $ProdNom = $_POST["ProdNom"];
 $categoría   = $_POST["categoría"];
-$talla = $_POST["talla"];
-$cantidad   = $_POST["cantidad"];
+$cantidad = $_POST["cantidad"];
+$descripcion   = $_POST["descripcion"];
 
 
 //Login
