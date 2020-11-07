@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -54,17 +55,16 @@
 						<ul>
 							<li><a href="#form_producto">Registrar producto cardex</a></li>															
 							<li><a href="#">Ingresar producto a inventario</a></li>			
-							<li><a href="#">Opcion2</a></li>							
-							<li><a href="#">opcion3</a></li>
-							<li><a href="#">opcion4</a></li>
-							<li><a href="#">opcion5</a></li>
 						</ul>
 					</nav>
 				</div>
 			</section>
 			<section id='form_producto'>
+				<h2>Ingrese los datos de su producto a registrar:</h2>
+
+				<tr>
+				<td>	
 				<form action="index_producto.php" method="POST" enctype="multipart/form-data">
-					<h2>Ingrese los datos de su producto a registrar:</h2>
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label >Codigo de producto</label>
@@ -97,8 +97,69 @@
 						<label>Descripcion</label>
 						<textarea name="descripcion" rows="10" cols="40">Escribe aquí una descripcion del producto</textarea>
 					  </div>
-					<button type="submit" class="btn btn-primary" name="btnguardar">Guardar</button>
+					<button type="submit" class="btn btn-primary" name="btnguardar">Registrar producto en kardex</button>
+					</td>
+					<td>
+					<?php
+					// Incluimos los datos de conexión y las funciones:
+					include ("conexion.php");
+					include ("funciones.php");
+					// Usamos esas variables:
+					$consulta= "SELECT tpronom FROM tn.tproducto";
+					if ($paquete=consultar ($consulta)){
+						
+						tabular ($paquete);
+					} else {
+					echo "<p>No se encontraron datos</p>";
+					}
+					
+					?>
+					</td>
+
+					</tr>
 				  </form>
+				  <hr>
+				  <hr>
+
+			</section >
+			<section id='form_inventario'>
+				<h2>Ingrese el producto a inventario</h2>
+				<form action="index_producto.php" method="POST" enctype="multipart/form-data">
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label >Codigo de producto</label>
+							<input type="text" class="form-control" id="ProdNom" placeholder="codigo de producto" name="Prodcod" >
+						</div>	
+					  <div class="form-group col-md-6">
+						<label >Nombre producto:</label>
+						<input type="text" class="form-control" id="ProdNom" placeholder="Nombre de producto" name="ProdNom">
+					  </div>
+					  <div class="form-group col-md-6">
+						<label >Categoria</label>
+						<select name="categoria" >							
+							<option value = "" selected="true" disabled="disabled">seleccione la categoría</option>
+							<option value="Blusas dama">Blusa Dama</option>							
+							<option value = "Pantalon dama">Pantalon dama</option>							
+							<option Value = "Pijama dama">Pijama dama</option>
+							<option value="Camisa Caballero">Camisa Caballero</option>							
+							<option value = "pantalon caballero">Pantalon dama</option>							
+							<option value ="Accesorios">Accesorios</option>							
+						</select>
+					  </div>
+					</div>
+					<div class="form-group">
+					<label>Cargue una imagen del producto</label>	
+					<input id= "file" type="file" name="imagen"/>
+					</div>
+					<hr>
+					<div id="preview"></div>
+					<div class="form-group">
+						<label>Descripcion</label>
+						<textarea name="descripcion" rows="10" cols="40">Escribe aquí una descripcion del producto</textarea>
+					  </div>
+					<button type="submit" class="btn btn-primary" name="btnguardar2">Guardar producto a inventario</button>
+				  </form>
+
 
 			</section>		
 			<section class="our_client">

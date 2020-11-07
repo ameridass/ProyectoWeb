@@ -13,37 +13,47 @@ $archivo     = $ruta_base . basename( $_FILES["imagen"]["name"] );
 $Ok          = 1;
 $tipo_imagen = pathinfo( $archivo, PATHINFO_EXTENSION );
 
-
 $action = 'I';
 $Prodcod = "0";
+$ok = 1;
+
 
 if(isset($_POST["btnguardar"]))
 {
-	$res = $mysqli->multi_query("CALL mant_prod('$action','$Prodcod', '$ProdNom','$categoria','$descripcion','$archivo', @menssage); select @menssage");
-	
-
-	echo $res;
-
-
-	
-	
-	
-	
+if ($action = "I") {
+	$check = getimagesize( $_FILES["imagen"]["tmp_name"] );
+    if ( $check !== false ) {  
+        $isimage = 1;//si es una imagen
+    } else {
+        $isimage = 0;//no es una imagen
+	}
+	if ( $tipo_imagen != "jpg" && $tipo_imagen != "PNG" && $tipo_imagen != "jpeg" && $tipo_imagen != "JPEG"  && $tipo_imagen != "gif" 
+	&& $tipo_imagen != "png" && $tipo_imagen != "JPG") {
+		//echo "Solo aceptamos extensiones JPG, JPEG, PNG & GIF.";
+		$Ok = 0;
+	}
+	if ( $isimage == 1 && $Ok = 1) {  //comprueba si es un a imagen
+		/*if ( file_exists( $archivo ) ) {//comprueba si la imagen ya existe*/
+			if ( move_uploaded_file( $_FILES["imagen"]["tmp_name"], $archivo ) ) {
+				$res = $mysqli->multi_query("CALL mant_prod('$action','$Prodcod', '$ProdNom','$categoria','$descripcion','$archivo', @menssage); select @menssage");
+					echo "<script> alert('producto $ProdNom, creado correctamente'); window.location='index_producto.html' </script>";
+			}else{
+				echo "<script> alert('error el archivo no pudo ser cargado, producto no ingresado'); window.location='index_producto.html' </script>";
+			}	
+		/*}else{
+			echo "<script> alert('el archivo cargado ya existe, cambie el nombre'); window.location='index_producto.html' </script>";
+		}*/	
+	}else{
+		echo "<script> alert('el archivo cargado no es una imagen o no es un formato valido'); window.location='index_producto1.php' </script>";
+	}	
+}
+echo "<script> alert('actualizar'); window.location='index_producto.html' </script>";
 }
 
 
-
-
-//comprueba que es una imagen
+/*comprueba que es una imagen
 if ( isset( $_POST["btnguardar"] ) ) {
-    $check = getimagesize( $_FILES["imagen"]["tmp_name"] );
-    if ( $check !== false ) {
-        echo "Es una imagen - " . $check["mime"] . ".";
-        $Ok = 1;
-    } else {
-        echo "No es una imagen.";
-        $Ok = 0;
-    }
+   
 }
 
 //comprueba si existe
@@ -68,5 +78,5 @@ if ( $Ok == 0 ) {
         echo "Lo sentimos, ha habido un error subiendo el archivo.";
     }
 }
-
+*/
 ?>
