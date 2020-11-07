@@ -6,7 +6,7 @@ function mostrarDatos(articulo) {
 }
 
 addEventListener("click", function (e) {
-  //e.preventDefault();
+  e.preventDefault();
   let articulo = e.target.parentElement.parentElement;
   mostrarDatos(articulo);
   sessionStorage.setItem("URL", almacen);
