@@ -13,7 +13,7 @@ class carro{
     }
 
     mostrarDatos(producto){
-
+console.log("MOSTRAR DATOS");
         const infoProducto ={
             imagen : producto.querySelector('img').src,
             precio : producto.querySelector('p').textContent
@@ -21,20 +21,26 @@ class carro{
 
         this.insertarCarrito(infoProducto);
         
-        localStorage.setItem("imagenProducto", infoProducto.titulo);
-            console.log(infoProducto.titulo);
+        /*localStorage.setItem("imagenProducto", infoProducto.titulo);
+            console.log(infoProducto.titulo);*/
         
         
         }
 
         insertarCarrito(articulo){
+            console.log("MOSTRAR DATOS");
+         
 
-                const row = document.createElement('tr');
+            localStorage.setItem("Articulo", JSON.stringify(articulo));
+           
+           
+
+                /*const row = document.createElement('tr');
                 row.innerHTML = `
                 <td> <img src = "${articulo.imagen}"width =100 >
                 </td>
                 
-                `;
+                `;*/
                 
 
         }
