@@ -36,9 +36,9 @@ if ($action = "I") {
 		/*if ( file_exists( $archivo ) ) {//comprueba si la imagen ya existe*/
 			if ( move_uploaded_file( $_FILES["imagen"]["tmp_name"], $archivo ) ) {
 				$res = $mysqli->multi_query("CALL mant_prod('$action','$Prodcod', '$ProdNom','$categoria','$descripcion','$archivo', @menssage); select @menssage");
-					echo "<script> alert('producto $ProdNom, creado correctamente'); window.location='index_producto.html' </script>";
+					echo "<script> alert('producto $ProdNom, creado correctamente'); window.location='index_producto1.html' </script>";
 			}else{
-				echo "<script> alert('error el archivo no pudo ser cargado, producto no ingresado'); window.location='index_producto.html' </script>";
+				echo "<script> alert('error el archivo no pudo ser cargado, producto no ingresado'); window.location='index_producto1.html' </script>";
 			}	
 		/*}else{
 			echo "<script> alert('el archivo cargado ya existe, cambie el nombre'); window.location='index_producto.html' </script>";
@@ -47,7 +47,7 @@ if ($action = "I") {
 		echo "<script> alert('el archivo cargado no es una imagen o no es un formato valido'); window.location='index_producto1.php' </script>";
 	}	
 }
-echo "<script> alert('actualizar'); window.location='index_producto.html' </script>";
+echo "<script> alert('actualizar'); window.location='index_producto1.html' </script>";
 }
 
 
