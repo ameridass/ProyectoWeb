@@ -1,4 +1,22 @@
+<?php
+include_once 'user.php';
+include_once 'user_session.php';
 
+
+$userSession = new UserSession();
+$user = new User();
+
+if(isset($_SESSION['user'])){
+    //echo "hay sesion";
+    $user->setUser($userSession->getCurrentUser());
+    include_once 'home.php';
+}else{
+    include_once 'login.php';
+
+}
+
+    
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,9 +61,11 @@
 			<div class="span8">
 				<div class="account pull-right">
 					<ul class="user-menu">
-						<li><a href="index.php">Mi cuenta</a></li>
+                        <li><?php echo $user->getNombre();  ?></li>
 						<li><a href="cart.html">Carrito</a></li>
-						<li><a href="loginusr.php">Login</a></li>
+						<li class="cerrar-sesion"><a href="logout.php">Cerrar sesión</a></li>
+						
+
 					</ul>
 				</div>
 			</div>
