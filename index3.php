@@ -1,3 +1,24 @@
+<?php
+include 'user_session.php';
+
+
+$userSession = new UserSession();
+$user = new User();
+
+if(isset($_SESSION['user'])){
+    //echo "hay sesion";
+    $user->setUser($userSession->getCurrentUser());
+    include_once 'index.php';
+}else{
+    include_once 'index1.php';
+
+}
+
+    
+?>
+
+
+
 <?php 
 
 	$conexion=mysqli_connect('localhost:3307','root','abc123**','tn');
@@ -43,7 +64,12 @@
 			<div class="span8">
 				<div class="account pull-right">
 					<ul class="user-menu">
-						<li><a href="index.php">Mi cuenta</a></li>
+						<li><a href="index1.php">Mi cuenta</a></li>
+						<?php
+						if
+						?>
+
+
 						<li><a href="cart.html">Carrito</a></li>
 						<li><a href="loginusr.php">Login</a></li>
 					</ul>
