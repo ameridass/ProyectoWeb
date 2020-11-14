@@ -1,5 +1,6 @@
 <?php
-include 'user_session.php';
+include_once 'user.php'
+include_once 'user_session.php';
 
 
 $userSession = new UserSession();
@@ -65,11 +66,6 @@ if(isset($_SESSION['user'])){
 				<div class="account pull-right">
 					<ul class="user-menu">
 						<li><a href="index1.php">Mi cuenta</a></li>
-						<?php
-						if
-						?>
-
-
 						<li><a href="cart.html">Carrito</a></li>
 						<li><a href="loginusr.php">Login</a></li>
 					</ul>

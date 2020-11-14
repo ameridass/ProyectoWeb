@@ -4,6 +4,12 @@
 
  ?>
 
+<?php
+ function carrito(&$id,&$nombre,&$nombre) { 
+	$sql="insert into tordenes";
+}
+?>
+
 
 <!DOCTYPE html>
 <html>
@@ -27,7 +33,7 @@
 		</tr>
 
 		<?php 
-		$sql="SELECT idtproducto, tpronom,tproimg from tproducto";
+		$sql="SELECT idtproducto, tpronom,tprodsc,tproimg from tproducto";
 		$result=mysqli_query($conexion,$sql);
 
 		while($mostrar=mysqli_fetch_array($result)){
