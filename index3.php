@@ -97,7 +97,7 @@
 				<p class="lead">Selecciona uno de nuestros productos y accede a un descuento</p>
 			</div>
 			<?php 
-				$sql="SELECT idtproducto, tpronom,tprodsc,tproimg from tproducto";
+				$sql="SELECT * from tproducto";
 				$result=mysqli_query($conexion,$sql);
 
 				while($mostrar=mysqli_fetch_array($result)){
@@ -112,10 +112,10 @@
 						</div>
 						<div class="card-body">
 							<img src="<?php echo $mostrar['tproimg'] ?>" alt="<?php echo $mostrar['tpronom'] ?>" class="card-img-top" style="width:100px;height:100px;> 
-							<h1 class="card-title pricing-card-title precio">S/. <span class=""><?php echo $mostrar['tprodsc'] ?></span></h1>
+							<h1 class="card-title pricing-card-title precio">S/. <span class=""><?php echo $mostrar['tproamt'] ?></span></h1>
 							<ul class="list-unstyled mt-3 mb-4">
-								<li></li>
-								<li>8 GB RAM</li>
+								<li>id: <?php echo $mostrar['idtproducto'] ?></li>
+								<li>desc: <?php echo $mostrar['tprodsc'] ?></li>
 								<li>COLOR PLATEADO</li>
 								<li>256 GB DISCO SSD</li>
 							</ul>
