@@ -11,7 +11,7 @@ if(isset($_SESSION['user'])){
     $user->setUser($userSession->getCurrentUser());
     include_once 'home.php';
 }else{
-    include_once 'login.php';
+    include_once 'index1.php';
 
 }
 
@@ -90,6 +90,8 @@ if(isset($_SESSION['user'])){
 				</nav>
 			</div>
 		</section>
+	
+	
 		<section class="homepage-slider" id="home-slider">
 			<div class="flexslider">
 				<ul class="slides">
