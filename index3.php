@@ -118,16 +118,17 @@ if(isset($_SESSION['user'])){
 				<h1 class="display-4 mt-4">Lista de Productos</h1>
 				<p class="lead">Selecciona uno de nuestros productos y accede a un descuento</p>
 			</div>
-			<?php 
+			
+
+
+			<div class="container" id="lista-productos">
+				<div class="card-deck mb-3 text-center">
+				<?php 
 				$sql="SELECT * from tproducto";
 				$result=mysqli_query($conexion,$sql);
 
 				while($mostrar=mysqli_fetch_array($result)){
 		 	?>
-
-
-			<div class="container" id="lista-productos">
-				<div class="card-deck mb-3 text-center">
 					<div class="card mb-4 shadow-sm">	
 						<div class="card-header">
 							<h4 class="my-0 font-weight-bold"><?php echo $mostrar['tpronom'] ?></h4>
@@ -144,11 +145,12 @@ if(isset($_SESSION['user'])){
 							<a href="" class="btn btn-block btn-primary agregar-carrito" data-id="<?php echo $mostrar['idtproducto'] ?>">Comprar</a>
 						</div>
 					</div>
-				</div>
-			</div>
-			<?php 
+					<?php 
 	}
 	 ?>
+				</div>
+			</div>
+			
 		</main>	
 		<section id="footer-bar">
 			<div class="row">
