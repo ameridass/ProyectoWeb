@@ -143,15 +143,15 @@
 	</section>
 
 
-
+	<script src="js/carrito.js"></script>
+    <script src="js/pedido.js"></script>
 	<script src="Dynamic/jquery-3.4.1.min.js"></script>
 	<script src="Dynamic/bootstrap.bundle.min.js"></script>
 	<script src="Dynamic/sweetalert2.min.js"></script>
 	<script src="Dynamic/pedido.js"></script>
 	<script src="Dynamic/pedido.js"></script>
 
-	<script src="js/carrito.js"></script>
-    <script src="js/pedido.js"></script>
+	
 
 </body>
 
