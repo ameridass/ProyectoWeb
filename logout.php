@@ -5,6 +5,6 @@
     $userSession = new UserSession();
     $userSession->closeSession();
 
-    header("location: index.html");
+    header("location: index1.php");
 
 ?>
