@@ -5,6 +5,7 @@
 
     if(isset($_GET['cerrar_sesion'])){
         session_unset(); 
+        header('location: index.php');
 
         // destroy the session 
         session_destroy(); 

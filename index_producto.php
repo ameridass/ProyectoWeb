@@ -5,6 +5,8 @@ $mysqli = new mysqli("localhost:3307","root","abc123**","tn");
 
 $Prodcod = $_POST["Prodcod"];
 $ProdNom = $_POST["ProdNom"];
+$prodcant = $_POST["prodcant"];
+$prodamt = $_POST["prodamt"];
 $categoria   = $_POST["categoria"];
 $imagen = $_FILES["imagen"]["name"];
 $descripcion   = $_POST["descripcion"];
@@ -35,7 +37,7 @@ if ($action = "I") {
 	if ( $isimage == 1 && $Ok = 1) {  //comprueba si es un a imagen
 		/*if ( file_exists( $archivo ) ) {//comprueba si la imagen ya existe*/
 			if ( move_uploaded_file( $_FILES["imagen"]["tmp_name"], $archivo ) ) {
-				$res = $mysqli->multi_query("CALL mant_prod('$action','$Prodcod', '$ProdNom','$categoria','$descripcion','$archivo', @menssage); select @menssage");
+				$res = $mysqli->multi_query("CALL mant_prod('$action','$Prodcod', '$ProdNom','$categoria','$descripcion','$archivo','$prodcant','$prodamt', @menssage); select @menssage");
 					echo "<script> alert('producto $ProdNom, creado correctamente'); window.location='index_producto1.html' </script>";
 			}else{
 				echo "<script> alert('error el archivo no pudo ser cargado, producto no ingresado'); window.location='index_producto1.html' </script>";

@@ -7,11 +7,9 @@
     }else{
         if($_SESSION['rol'] != 1){
 			header('location: index_producto1.php');
-			$_userd = $_SESSION['user'];
+			
         }
     }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,9 +51,7 @@
 				<div class="span8">
 					<div class="account pull-right">
 						<ul class="user-menu">				
-							<li><a href="loginusr.php?cerrar_sesion=1" $_userd>CERRAR SESION</a></li>
-							<li><a href="checkout.html">Carrito</a></li>					
-							<li><a href="register.html">Login</a></li>		
+							<li><a href="loginusr.php?cerrar_sesion=1" >CERRAR SESION, <?php echo ($_SESSION['user']);?></a></li>		
 						</ul>
 					</div>
 				</div>
@@ -82,11 +78,19 @@
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label >Codigo de producto</label>
-							<input type="text" class="form-control" id="ProdNom" placeholder="codigo de producto" name="Prodcod" >
+							<input type="text" class="form-control" id="Prodcod" placeholder="codigo de producto" name="Prodcod" >
 						</div>	
 					  <div class="form-group col-md-6">
 						<label >Nombre producto:</label>
 						<input type="text" class="form-control" id="ProdNom" placeholder="Nombre de producto" name="ProdNom">
+					  </div>
+					  <div class="form-group col-md-6">
+						<label >cantidad de producto:</label>
+						<input type="text" class="form-control" id="Prodcant" placeholder="Nombre de producto" name="prodcant">
+					  </div>
+					  <div class="form-group col-md-6">
+						<label >precio de producto</label>
+						<input type="text" class="form-control" id="Prodamt" placeholder="Nombre de producto" name="prodamt">
 					  </div>
 					  <div class="form-group col-md-6">
 						<label >Categoria</label>
@@ -119,6 +123,24 @@
 				  <hr>
 
 			</section >
+			<section>
+			<h2>eliminar producto</h2>
+			<select name="select1">
+   
+       <?php
+            
+                 $consulta="SELECT concat(idtproducto," - ",tpronom)as id FROM tn.tproducto;";
+                 $resultado=mysqli_query($conn,$consulta);
+                       
+                        while($lista=mysqli_fetch_array($resultado))
+ 
+	    ?>
+                   <option  value="<? $lista['id']?> ">
+    	                       <? $lista['curidso']?>
+                   </option>
+   
+</select> 
+			</section>
 		
 			<section class="our_client">
 			</section>
@@ -149,6 +171,7 @@
 					</div>					
 				</div>	
 			</section>
+		
 			<section id="copyright">
 				<span>Proyecto de programacion web de "Alvaro Sosa, Geizer Posadas y Josue Noriega"</span>
 			</section>
