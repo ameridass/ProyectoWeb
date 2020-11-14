@@ -1,0 +1,36 @@
+
+.col-12{
+
+    
+    animation-name: mymove;
+    animation-duration: 5s;
+}
+
+@keyframes mymove {
+    from {left: 200px;}
+    to {left: 0px;}
+  }
+
+
+  /*.text-center{
+    color: white;
+  }*/
+.contenedor {
+    transition: transform .2s;
+
+}
+  .contenedor:hover {
+   
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5); 
+
+  }
+#titulo_1{
+    color: white;
+
+}
+#subtitulo{
+  color  : white;
+
+}
