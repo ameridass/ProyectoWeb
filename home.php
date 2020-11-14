@@ -90,6 +90,8 @@ if(isset($_SESSION['user'])){
 				</nav>
 			</div>
 		</section>
+	
+	
 		<section class="homepage-slider" id="home-slider">
 			<div class="flexslider">
 				<ul class="slides">
