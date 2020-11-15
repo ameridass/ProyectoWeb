@@ -1,6 +1,7 @@
 <?php
 include_once 'user.php';
 include_once 'user_session.php';
+include("conexion.php");
 
 
 $userSession = new UserSession();
@@ -20,274 +21,180 @@ if(isset($_SESSION['user'])){
 
 <!DOCTYPE html>
 <html lang="en">
-<!-- Primera fase-->
-<!--10/10/2020-->
 
 <head>
-	<meta charset="utf-8">
-	<title>Index</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
-	<!-- bootstrap -->
-	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+	<link href="themes/css/style.css" rel="stylesheet" />
+	<script src="js/popper.min.js"></script>
 
-	<link href="themes/css/bootstrappage.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/sweetalert2.min.css">
 
-	<!-- global styles -->
-	<link href="themes/css/flexslider.css" rel="stylesheet" />
-	<link href="themes/css/main.css" rel="stylesheet" />
 
-	<!-- scripts -->
-	<script src="themes/js/jquery-1.7.2.min.js"></script>
-	<script src="bootstrap/js/bootstrap.min.js"></script>
-	<script src="themes/js/superfish.js"></script>
-	<script src="themes/js/jquery.scrolltotop.js"></script>
-	<!--[if lt IE 9]>			
-			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-			<script src="js/respond.min.js"></script>
-		<![endif]-->
+	<title>INICIO</title>
 </head>
 
 <body>
-	<div id="top-bar" class="container">
-		<div class="row">
-			<div class="span4">
-				<form method="POST" class="search_form">
-					<input type="text" class="input-block-level search-query" Placeholder="Categoria, Marca">
-				</form>
+	<!-- Barra de navegacion -->
+	<header>
+		<div class="container">
+			<div class="row align-items-stretch justify-content-between">
+				<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+					<a class="navbar-brand" href="#">THE VINTAGE STORE</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+						aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarCollapse">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item dropdown">
+								<img src="themes/images/cart.png" class="nav-link dropdown-toggle img-fluid" height="70px" width="70px"
+									href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false"></img>
+								<div id="carrito" class="dropdown-menu" aria-labelledby="navbarCollapse">
+									<table id="lista-carrito" class="table">
+										<thead>
+											<tr>
+												<th>Imagen</th>
+												<th>Nombre</th>
+												<th>Precio</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody></tbody>
+									</table>
+									<a href="#" id="vaciar-carrito" class="btn btn-primary btn-block">Vaciar Carrito</a>
+									<a href="#" id="procesar-pedido" class="btn btn-danger btn-block">Procesar
+										Compra</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<a class="navbar-brand" href="logout.php">Cerrar Sesion <?php $_SESSION['user']?></a>
+				</nav>
 			</div>
-			<div class="span8">
-				<div class="account pull-right">
-					<ul class="user-menu">
-                        <li><?php echo $user->getNombre();  ?></li>
-						<li><a href="cart.html">Carrito</a></li>
-						<li class="cerrar-sesion"><a href="logout.php">Cerrar sesión</a></li>
-						
+		</div>
+	</header>
+	
 
-					</ul>
+	<main>
+	<section>
+			<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 my-4 mx-auto text-center">
+				<h1 class="display-4 mt-4">Lista de Prendas</h1>
+				<p class="lead">Hecha un vistazo y si algo te gusta agregalo al carrito</p>
+			</div>
+			
+			
+			<div class="container" id="lista-productos" >
+				
+			<?php 
+                       	$sql="SELECT * from tproducto";
+                       	$result=mysqli_query($conn,$sql);
+        
+                       	while($mostrar=mysqli_fetch_array($result)){
+        
+                		?>
+						
+                
+                		<div class="card-deck mb-3 text-center" >
+                    		<div class="card mb-4 shadow-sm">	
+                            
+                                <div class="card-header">
+                                    <h4 class="my-0 font-weight-bold"><?php echo $mostrar['tpronom'] ?></h4>
+                                </div>
+                                <div class="card-body">
+                                    <img src="<?php echo $mostrar['tproimg'] ?>" alt="<?php echo $mostrar['tpronom'] ?>" class="card-img-top" style="width:200px;height:200px";> 
+                                    <h1 class="card-title pricing-card-title precio">Q. <span><?php echo $mostrar['tproamt'] ?></span></h1>
+                                    <ul class="list-unstyled mt-3 mb-4">
+                                        <li>id: <?php echo $mostrar['idtproducto'] ?></li>
+                                        <li><?php echo $mostrar['tprodsc'] ?></li>
+                                        <li><?php echo $mostrar['tprocat'] ?></li>
+                                        <li><?php echo $mostrar['tprosts'] ?></li>
+                                    </ul>
+                                    <a href="" class="btn btn-block btn-primary agregar-carrito" data-id="<?php echo $mostrar['idtproducto'] ?>">Comprar</a>
+								</div>
+						   </div>
+						</div>   	
+						
+                
+                 
+						<?php 
+		}
+		?>
+           
+			</div>
+		
+		</section>
+	
+	
+	</main>	
+	<footer>
+		<div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 col-lg-4 footer-about wow fadeInUp">
+						<img class="logo-footer" src="themes/images/logo_01.png" alt="logo-footer"
+							data-at2x="assets/img/logo.png">
+						<p>
+							Innovar, liderar, mejorar, proporcionar productos y servicios de mejor valor a clientes
+							globales. Para marcar la diferencia a través de nuestra marca y estar a la vanguardia de las
+							tendencias de la moda, los cambios del mercado y la última tecnología.
+						</p>
+						
+						<p><a href="loginusr.php">LOGIN</a><i class="fas fa-sign-in-alt"></i></p>
+					</div>
+					<div class="col-md-4 col-lg-4 offset-lg-1 footer-contact wow fadeInDown">
+						<h3>Contacto</h3>
+						<p><i class="fas fa-map-marker-alt"></i> Guatemala,Guatemala</p>
+						<p><i class="fas fa-phone"></i> +502 5544-3322</p>
+						<p><i class="fas fa-envelope"></i><a href="mailto:hello@domain.com">estudiantes@udv.edu.gt</a>
+						</p>
+					</div>
+					<div class="col-md-4 col-lg-3 footer-social wow fadeInUp">
+						<h3>Siguenos</h3>
+						<p>
+							<a href="#"><i class="fab fa-facebook"></i></a>
+							<a href="#"><i class="fab fa-twitter"></i></a>
+							<a href="#"><i class="fab fa-google-plus-g"></i></a>
+							<a href="#"><i class="fab fa-instagram"></i></a>
+							<a href="#"><i class="fab fa-pinterest"></i></a>
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div id="wrapper" class="container">
-		<section class="navbar main-menu">
-			<div class="navbar-inner main-menu">
-				<a href="index.html" class="logo pull-left"><img src="themes/images/logo_01.png " class="site_logo"
-						alt=""></a>
-				<nav id="menu" class="pull-right">
-					<ul>
-						<li><a href="./products.html">Mujeres</a>
-						</li>
-						<li><a href="#">Hombres</a></li>
-						<li><a href="#">Sport</a>
-						</li>
-						<li><a href="#">Niños</a></li>
-						<li><a href="#">Mas vendido</a></li>
-						<li><a href="#">Mejor vendido</a></li>
-					</ul>
-				</nav>
-			</div>
-		</section>
-	
-	
-		<section class="homepage-slider" id="home-slider">
-			<div class="flexslider">
-				<ul class="slides">
-					<li>
-						<img src="themes/images/carousel/bannerSlide-1.JPG" style="height: 400px;" alt="" />
-					</li>
-					<li>
-						<img src="themes/images/carousel/bannerSlide-2.JPG" style="height: 400px;" alt="" />
-						<div class="intro">
-							<h1>Temporada fin de año</h1>
-							<p><span>Hasta 50% de descuento</span></p>
-							<p><span>En nuestro productos seleccionados</span></p>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</section>
-		<section class="header_text">
-			Sobre nosotros
-			<br />Sobre nosotros 1000
-		</section>
-		<section class="main-content">
-			<div class="row">
-				<div class="span12">
-					<div class="row">
-						<div class="span12">
-							<h4 class="title">
-								<span class="pull-left"><span class="text"><span class="line">Nuestros
-											<strong>Productos</strong></span></span></span>
-								<span class="pull-right">
-									<a class="left button" href="#myCarousel" data-slide="prev"></a><a
-										class="right button" href="#myCarousel" data-slide="next"></a>
-								</span>
-							</h4>
-							<div id="myCarousel" class="myCarousel carousel slide">
-								<div class="carousel-inner" id="seccion">
-									<div class="active item" id="art">
-										<ul class="thumbnails" >
-											<li class="span3">
-												<div class="product-box" >
-													<span class="sale_tag"></span>
-													<p><a href="product_detail.html">
-														<img src="themes/images/ladies/1.jpg" alt=""> </a></p>
-													<a href="product_detail.html" class="title">Blusa Azul y
-														pants</a><br />
-													<a href="products.html" class="category">pijama</a>
-													<p class="price">Q20.00</p>
-												</div>
-											</li>
-											<li class="span3">
-												<div class="product-box" >
-													<span class="sale_tag"></span>
-													<p><a href="product_detail.html"><img
-																src="themes/images/ladies/2.jpg" alt="" /></a></p>
-													<a href="product_detail.html" class="title">Blusa aqua y
-														pants</a><br />
-													<a href="products.html" class="category">pijama</a>
-													<p class="price">Q20.00</p>
-												</div>
-											</li>
-											<li class="span3">
-												<div class="product-box">
-													<p><a href="product_detail.html"><img
-																src="themes/images/ladies/3.jpg" alt="" /></a></p>
-													<a href="product_detail.html" class="title">Pijama cuadricula
-														fina</a><br />
-													<a href="products.html" class="category">Pantalon pijama</a>
-													<p class="price">Q20.00</p>
-												</div>
-											</li>
-											<li class="span3">
-												<div class="product-box">
-													<p><a href="product_detail.html"><img
-																src="themes/images/ladies/4.jpg" alt="" /></a></p>
-													<a href="product_detail.html" class="title">Pantalon cuadricula semi
-														fina</a><br />
-													<a href="products.html" class="category">Pantalon pijama</a>
-													<p class="price">Q20.00</p>
-												</div>
-											</li>
-										</ul>
-									</div>
-									<div class="item">
-										<ul class="thumbnails">
-											<li class="span3">
-												<div class="product-box">
-													<p><a href="product_detail.html"><img
-																src="themes/images/ladies/5.jpg" alt="" /></a></p>
-													<a href="product_detail.html" class="title">Pantalon pijama rayado
-														verde y azul</a><br />
-													<a href="products.html" class="category">Pantalon pijama</a>
-													<p class="price">Q20.00</p>
-												</div>
-											</li>
-											<li class="span3">
-												<div class="product-box">
-													<p><a href="product_detail.html"><img
-																src="themes/images/ladies/6.jpg" alt="" /></a></p>
-													<a href="product_detail.html" class="title">Blusa rosa
-														liviana</a><br />
-													<a href="products.html" class="category">Basic</a>
-													<p class="price">Q20.00</p>
-												</div>
-											</li>
-											<li class="span3">
-												<div class="product-box">
-													<p><a href="product_detail.html"><img
-																src="themes/images/ladies/7.jpg" alt="" /></a></p>
-													<a href="product_detail.html" class="title">Verde amí</a><br />
-													<a href="products.html" class="category">Basic</a>
-													<p class="price">Q20.00</p>
-												</div>
-											</li>
-											<li class="span3">
-												<div class="product-box">
-													<p><a href="product_detail.html"><img
-																src="themes/images/ladies/8.jpg" alt="" /></a></p>
-													<a href="product_detail.html" class="title">Wet Seal</a><br />
-													<a href="products.html" class="category">Vestidos</a>
-													<p class="price">Q20.00</p>
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5 footer-copyright">
+						<p>&copy; Proyecto web Grupo 1</p>
 					</div>
-					<br />
-					<div class="row">
-						<div class="span12">
-							<class class="title">
-								<span class="pull-left"><span class="text"><span class="line">Ultimos
-											<strong>Ingresos</strong></span></span></span>
-							</class>
-						</div>
+					<div class="col-md-7 footer-menu">
+						<nav class="navbar navbar-dark navbar-expand-md">
+							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+								aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+						</nav>
 					</div>
 				</div>
-				<div class="row feature_box">
-				</div>
 			</div>
-		</section>
-		<section id="footer-bar">
-			<div class="row">
-				<div class="span3">
-					<h4>Navegacion</h4>
-					<ul class="nav">
-						<li><a href="#">Inicio</a></li>
-						<li><a href="#">Sobre nosotros</a></li>
-						<li><a href="#">Contacto</a></li>
-						<li><a href="#">Tu carrio</a></li>
-						<li><a href="#">Login</a></li>
-					</ul>
-				</div>
-				<div class="span4">
-					<h4>Mi cuenta</h4>
-					<ul class="nav">
-						<li><a href="#">Ajustes</a></li>
-						<li><a href="#">Historial de ordenes</a></li>
-					</ul>
-				</div>
-				<div class="span5">
-					<p class="logo"><img src="themes/images/logo_01.png" class="site_logo" alt=""></p>
-					<p>Nos reservamos los derechos.</p>
-					<br />
-					<span class="social_icons">
-						<a class="facebook" href="#">Facebook</a>
-						<a class="twitter" href="#">Twitter</a>
-						<a class="skype" href="#">Skype</a>
-						<a class="vimeo" href="#">Vimeo</a>
-					</span>
-				</div>
-			</div>
-		</section>
-		<section id="copyright">
-			<span>Proyecto de programacion web de "Alvaro Sosa, Geizer Posadas y Josue Noriega"</span>
-		</section>
-	</div>
-
-	<script src="Dynamic/vista.js"></script>
-	<script src="Dynamic/eventosVistaPrevia.js"></script>
-	<script src="themes/js/common.js"></script>
-	<script>
-		$(function () {
-			$(document).ready(function () {
-				$('.flexslider').flexslider({
-					animation: "fade",
-					slideshowSpeed: 4000,
-					animationSpeed: 600,
-					controlNav: false,
-					directionNav: true,
-					controlsContainer: ".flex-container" // the container that holds the flexslider
-				});
-			});
-		});
-	</script>
+		</div>
+	</footer>
+	
+	
+	<script src="Dynamic/jquery-3.4.1.min.js"></script>
+	<script src="Dynamic/bootstrap.bundle.min.js"></script>
+	<script src="Dynamic/sweetalert2.min.js"></script>
+	<script src="Dynamic/pedido.js"></script>
+	<script src="Dynamic/pedido.js"></script>
+	<script src="js/carrito.js"></script>
+    <script src="js/pedido.js"></script>
 </body>
 
 </html>

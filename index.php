@@ -4,24 +4,24 @@
     include("conexion.php");
  ?>
 <!DOCTYPE html>
-<html lang="en">
+	<html lang="en">
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport"
-		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-	<link href="themes/css/style.css" rel="stylesheet" />
-	<script src="js/popper.min.js"></script>
+		<head>
+			<meta charset="UTF-8">
+			<meta name="viewport"
+				content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+				<link rel="stylesheet" href="css/bootstrap.min.css">
+				<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+				<link href="themes/css/style.css" rel="stylesheet" >
+				<script src="js/popper.min.js"></script>
 
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/sweetalert2.min.css">
+				<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+				integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+				<link rel="stylesheet" href="css/sweetalert2.min.css">
 
 
-	<title>INICIO</title>
-</head>
+			<title>INICIO</title>
+		</head>
 
 <body>
 	<!-- Barra de navegacion -->
@@ -39,7 +39,8 @@
 							<li class="nav-item dropdown">
 								<img src="themes/images/cart.png" class="nav-link dropdown-toggle img-fluid" height="70px" width="70px"
 									href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false"></img>
+									aria-expanded="false">
+								</img>
 								<div id="carrito" class="dropdown-menu" aria-labelledby="navbarCollapse">
 									<table id="lista-carrito" class="table">
 										<thead>
@@ -50,7 +51,6 @@
 												<th></th>
 											</tr>
 										</thead>
-										<tbody></tbody>
 									</table>
 									<a href="#" id="vaciar-carrito" class="btn btn-primary btn-block">Vaciar Carrito</a>
 									<a href="#" id="procesar-pedido" class="btn btn-danger btn-block">Procesar
@@ -59,59 +59,62 @@
 							</li>
 						</ul>
 					</div>
-					<a class="navbar-brand" href="#">Mi Cuenta</a>
+					<a class="navbar-brand" href="index1.php">Mi Cuenta</a>
 				</nav>
 			</div>
 		</div>
 	</header>
-	<div></div>
-
 	<main>
 		<section>
-		<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 my-4 mx-auto text-center">
-			<h1 class="display-4 mt-4">Lista de Prendas</h1>
-			<p class="lead">Hecha un vistazo y si algo te gusta agregalo al carrito</p>
-		</div>
-
-		<div class="container" id="lista-productos">
-		<div class="container" id="lista-productos">
-                <div class="card-deck mb-3 text-center" style="width:1200px;height:400px">
-                <?php 
-                        $sql="SELECT * from tproducto";
-                        $result=mysqli_query($conn,$sql);
+			<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 my-4 mx-auto text-center">
+				<h1 class="display-4 mt-4">Lista de Prendas</h1>
+				<p class="lead">Hecha un vistazo y si algo te gusta agregalo al carrito</p>
+			</div>
+			
+			
+			<div class="container" id="lista-productos" >
+				
+			<?php 
+                       	$sql="SELECT * from tproducto";
+                       	$result=mysqli_query($conn,$sql);
         
-                        while($mostrar=mysqli_fetch_array($result)){
+                       	while($mostrar=mysqli_fetch_array($result)){
         
-                ?>
+                		?>
+						
                 
-                <div class="card-deck mb-3 text-center" style="width:400px;">
-                            <div class="card mb-4 shadow-sm">	
+                		<div class="card-deck mb-3 text-center"  >
+                    		<div class="card mb-4 shadow-sm" >	
                             
                                 <div class="card-header">
                                     <h4 class="my-0 font-weight-bold"><?php echo $mostrar['tpronom'] ?></h4>
                                 </div>
                                 <div class="card-body">
                                     <img src="<?php echo $mostrar['tproimg'] ?>" alt="<?php echo $mostrar['tpronom'] ?>" class="card-img-top" style="width:200px;height:200px";> 
-                                    <h1 class="card-title pricing-card-title precio">S/. <span><?php echo $mostrar['tproamt'] ?></span></h1>
+                                    <h1 class="card-title pricing-card-title precio">Q. <span><?php echo $mostrar['tproamt'] ?></span></h1>
                                     <ul class="list-unstyled mt-3 mb-4">
                                         <li>id: <?php echo $mostrar['idtproducto'] ?></li>
                                         <li><?php echo $mostrar['tprodsc'] ?></li>
                                         <li><?php echo $mostrar['tprocat'] ?></li>
                                         <li><?php echo $mostrar['tprosts'] ?></li>
                                     </ul>
-                                    <a href="" class="btn btn-block btn-primary agregar-carrito" data-id="<?php echo $mostrar['idtproducto'] ?>">Comprar</a>
-                                </div>
-                            </div>
-                </div>
-                <?php  
-                }
-                ?>
-                </div>
-			
-		</div>
-	</section>
-	<!-- Nuevo footer -->
-	<section>
+                                    <a href="index1.php" class="btn btn-block btn-primary " data-id="<?php echo $mostrar['idtproducto'] ?>">Comprar</a>
+								</div>
+						   </div>
+						</div>   	
+						
+                
+                 
+						<?php 
+		}
+		?>
+           
+			</div>
+		
+		</section>
+		<!-- Nuevo footer -->
+	</main>
+	
 		
 	<footer>
 		<div class="footer-top">
@@ -166,13 +169,14 @@
 			</div>
 		</div>
 	</footer>
-	</section>
-	</main>
+	
+	
 	<script src="Dynamic/jquery-3.4.1.min.js"></script>
 	<script src="Dynamic/bootstrap.bundle.min.js"></script>
 	<script src="Dynamic/sweetalert2.min.js"></script>
 	<script src="Dynamic/pedido.js"></script>
 	<script src="Dynamic/pedido.js"></script>
+	
 </body>
 
 </html>

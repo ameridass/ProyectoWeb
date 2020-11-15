@@ -8,62 +8,46 @@ $user = new User();
 
 if(isset($_SESSION['user'])){
     //echo "hay sesion";
-	$user->setUser($userSession->getCurrentUser());
-	//include_once 'home.php';
-    header('location: home.php');
-
-}else if(isset($_POST['username']) && isset($_POST['password'])){
-    
-    $userForm = $_POST['username'];
-    $passForm = $_POST['password'];
-
-    $user = new User();
-    if($user->userExists($userForm, $passForm)){
-        //echo "Existe el usuario";
-        $userSession->setCurrentUser($userForm);
-        $user->setUser($userForm);
-		header('location: home.php');
-        //include_once 'home.php';
-    }else{
-        //echo "No existe el usuario";
-        $errorLogin = "Nombre de usuario y/o password incorrecto";
-        include_once 'vistas/login.php';
-    }
+    $user->setUser($userSession->getCurrentUser());
+    include_once 'home.php';
 }else{
-    //echo "login";
-    include_once 'vistas/login.php';
+    include_once 'index1.php';
+
 }
 
-
-
+    
 ?>
 
-<!--
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- Primera fase-->
+<!--10/10/2020-->
 
 <head>
 	<meta charset="utf-8">
 	<title>Index</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
-	
+	<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+	<!-- bootstrap -->
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 
 	<link href="themes/css/bootstrappage.css" rel="stylesheet" />
 
-	
+	<!-- global styles -->
 	<link href="themes/css/flexslider.css" rel="stylesheet" />
 	<link href="themes/css/main.css" rel="stylesheet" />
 
-	
+	<!-- scripts -->
 	<script src="themes/js/jquery-1.7.2.min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 	<script src="themes/js/superfish.js"></script>
 	<script src="themes/js/jquery.scrolltotop.js"></script>
-	
+	<!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
 </head>
 
 <body>
@@ -77,9 +61,11 @@ if(isset($_SESSION['user'])){
 			<div class="span8">
 				<div class="account pull-right">
 					<ul class="user-menu">
-						<li><a href="logincli.html">Mi cuenta</a></li>
+                        <li><?php echo $user->getNombre();  ?></li>
 						<li><a href="cart.html">Carrito</a></li>
-						<li><a href="loginusr.php">Login</a></li>
+						<li class="cerrar-sesion"><a href="logout.php">Cerrar sesión</a></li>
+						
+
 					</ul>
 				</div>
 			</div>
@@ -104,6 +90,8 @@ if(isset($_SESSION['user'])){
 				</nav>
 			</div>
 		</section>
+	
+	
 		<section class="homepage-slider" id="home-slider">
 			<div class="flexslider">
 				<ul class="slides">
@@ -303,4 +291,3 @@ if(isset($_SESSION['user'])){
 </body>
 
 </html>
-	-->
