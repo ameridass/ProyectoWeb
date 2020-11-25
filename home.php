@@ -109,7 +109,7 @@ if(isset($_SESSION['user'])){
                                 </div>
                                 <div class="card-body">
                                     <img src="<?php echo $mostrar['tproimg'] ?>" alt="<?php echo $mostrar['tpronom'] ?>" class="card-img-top" style="width:200px;height:200px";> 
-                                    <h1 class="card-title pricing-card-title precio">Q. <span><?php echo $mostrar['tproamt'] ?></span></h1>
+                                    <h1 class="card-title pricing-card-title precio">S/. <span><?php echo $mostrar['tproamt'] ?></span></h1>
                                     <ul class="list-unstyled mt-3 mb-4">
                                         <li>id: <?php echo $mostrar['idtproducto'] ?></li>
                                         <li><?php echo $mostrar['tprodsc'] ?></li>
